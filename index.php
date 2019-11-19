@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -57,7 +62,19 @@
             </div>
         </div>
         <!-- end preloader -->
-        
+
+        <?php
+            if(isset($_SESSION['email'])){
+                echo "<form action='includes/logout.include.php' method='post'>
+                          <button type='submit'>logout</button>
+                      </form>";
+            }
+            else{
+                echo "<form action='login.php' method='post'>
+                          <button type='submit'>login</button>
+                      </form>";
+            }
+        ?>
         <!-- start header -->
         <header class="header_area">
 
@@ -93,7 +110,7 @@
                                     <li role="presentation">
                                         <a id="drop-one" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                                           
-                                          <li role="presentation"><a role="menuitem" tabindex="-1" href="index.html">Home</a></li>
+                                          <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php">Home</a></li>
                                         </a>
                                         <!-- <ul id="menu1" class="dropdown-menu" role="menu">
                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="index-two.html">Home Page two</a></li>

@@ -22,7 +22,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="includes/login.include.php" method="post">
 					<span class="login100-form-title p-b-26">
 						Welcome
 					</span>
@@ -37,11 +37,8 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<span class="btn-show-pass">
-							<i class="zmdi zmdi-eye"></i>
-						</span>
 						<label for="password">Password</label>
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Password">
 						<!-- <span class="focus-input100" data-placeholder="Password"></span> -->
 					</div>
 
