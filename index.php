@@ -1,3 +1,12 @@
+<?php
+if(isset($_SESSION['username'])){
+    echo "logged in";
+}
+else{
+    echo "Not logged in";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -65,6 +74,9 @@
             <div class="main_header_area">
                 <div class="container">
                     <!-- start mainmenu & logo -->
+                    <form action="login.php" method="post">
+                        <button type="submit">login</button>
+                    </form>
                     <div class="mainmenu">
                         <div id="nav">
                             <nav class="navbar navbar-default">
@@ -93,7 +105,7 @@
                                     <li role="presentation">
                                         <a id="drop-one" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                                           
-                                          <li role="presentation"><a role="menuitem" tabindex="-1" href="index.html">Home</a></li>
+                                          <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php">Home</a></li>
                                         </a>
                                         <!-- <ul id="menu1" class="dropdown-menu" role="menu">
                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="index-two.html">Home Page two</a></li>
