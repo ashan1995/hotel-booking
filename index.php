@@ -94,7 +94,7 @@ session_start();
                                     <span class="icon-bar"></span>
                                   </button>
                                   <div class="site_logo fix">
-                                      <a id="brand" class="clearfix navbar-brand border-right-whitesmoke" href="index.html"><img src="img/logo2.png" alt="Trips"></a>
+                                      <a id="brand" class="clearfix navbar-brand border-right-whitesmoke" href="index.php"><img src="img/logo2.png" alt="Trips"></a>
                                       <!-- <div class="header_login floatleft">
                                           <ul>
                                               <li><a href="#">Login</a></li>
@@ -131,7 +131,7 @@ session_start();
                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="404.html">404 Page</a></li>
                                         </ul>
                                     </li> -->
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="about-us.html">About US</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="about-us.php">About US</a></li>
                                     <!-- <li><a href="blog.html">News</a></li> -->
                                     <li><a href="contact-us.html">Contacts</a></li>
                                   </ul>
