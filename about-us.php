@@ -1,3 +1,11 @@
+<?php
+include 'includes/Database.include.php';
+session_start();
+$Database = new Database();
+$conn = $Database->getConnection();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -49,7 +57,18 @@
 
     </head>
     <body id="about_us_page">
-
+    <?php
+    if(isset($_SESSION['email'])){
+        echo "<form action='includes/logout.include.php' method='post'>
+                          <button type='submit'>logout</button>
+                      </form>";
+    }
+    else{
+        echo "<form action='login.php' method='post'>
+                          <button type='submit'>login</button>
+                      </form>";
+    }
+    ?>
         
         <!-- start header -->
         <header class="header_area">
@@ -103,7 +122,7 @@
                                     <span class="icon-bar"></span>
                                   </button>
                                   <div class="site_logo fix">
-                                      <a id="brand" class="clearfix navbar-brand" href="index.html"><img src="img/site-logo.png" alt="Trips"></a>
+                                      <a id="brand" class="clearfix navbar-brand" href="index.php"><img src="img/site-logo.png" alt="Trips"></a>
                                       <!-- <div class="header_login floatleft">
                                           <ul>
                                               <li><a href="#">Login</a></li>
@@ -119,7 +138,7 @@
                                     <li role="presentation">
                                         <a id="drop-one" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                                           
-                                          <li role="presentation"><a role="menuitem" tabindex="-1" href="index.html">Home</a></li>
+                                          <li role="presentation"><a role="menuitem" tabindex="-1" href="index.php">Home</a></li>
                                         </a>
                                         <!-- <ul id="menu1" class="dropdown-menu" role="menu">
                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="index-two.html">Home Page two</a></li>
@@ -140,7 +159,7 @@
                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="404.html">404 Page</a></li>
                                         </ul>
                                     </li> -->
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="about-us.html">About US</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="about-us.php">About US</a></li>
                                     <!-- <li><a href="blog.html">News</a></li> -->
                                     <li><a href="contact-us.html">Contacts</a></li>
                                   </ul>
@@ -185,9 +204,30 @@
             <div class="container">
                 <div class="our_room_facilities margin-bottom-70">
                     <div class="facilities_top_para">
-                        <p>
-                            Semper ac dolor vitae msan. Cras interdum hendreritnia Phasellus accumsan rna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor. Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nuroin vehicula nunc arcu, pulvinarlla porta vel. Vivamus malesuada vitae sem ac pellentesque.
-                        </p>
+
+                            <?php
+                                $sql = "SELECT context FROM aboutus WHERE `name`='para1'";
+                                $result=$conn->query($sql);
+                                $context = '';
+
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        $context=$row["context"];
+                                    }
+                                }
+
+                                if(isset($_SESSION["email"])){
+                                    echo "<form action='includes/aboutus.include.php' method='post'>
+                                                <textarea name='para1' type='text' style='width:100%; height: 200px;'>$context</textarea>
+                                                <button type='submit'> Save</button>
+                                          </form>";
+                                }
+                                else{
+                                    echo "<p>".$context."</p>";
+                                }
+                            ?>
+
+
                     </div>
                     <div class="facilities_main_part">
                         <div class="section_title margin-top-80 margin-bottom-35">
@@ -254,9 +294,28 @@
                             <div class="col-lg-12 col-md-12">
                                 <div class="about_us_thumb margin-bottom-75">
                                     <img src="img/about-us-thumb.jpg" alt="">
-                                    <p>
-                                        Semper ac dolor vitae msan. Cras interdum hendreritnia Phasellus accumsan rna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor. Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nuroin vehicula nunc arcu, pulvinarlla porta vel. Vivamus malesuada vitae sem ac pellentesque.
-                                    </p>
+
+                                    <?php
+                                    $sql = "SELECT context FROM aboutus WHERE `name`='para2'";
+                                    $result=$conn->query($sql);
+                                    $context = '';
+
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            $context=$row["context"];
+                                        }
+                                    }
+
+                                    if(isset($_SESSION["email"])){
+                                        echo "<form action='includes/aboutus.include.php' method='post'>
+                                                <textarea name='para2' type='text' style='width:100%; height: 200px;'>$context</textarea>
+                                                <button type='submit'> Save</button>
+                                          </form>";
+                                    }
+                                    else{
+                                        echo "<p>".$context."</p>";
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>
