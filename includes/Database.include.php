@@ -9,7 +9,7 @@
 class Database{
     public function getConnection(){
 
-        return $connection = mysqli_connect('localhost','root','','apidb');
+        return $connection = mysqli_connect('localhost','root','','hotel_booking');
 
         if (!$connection) {
             die("Connection Failed : " . mysqli_connect_error());

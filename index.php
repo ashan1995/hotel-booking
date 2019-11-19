@@ -1,10 +1,6 @@
 <?php
-if(isset($_SESSION['username'])){
-    echo "logged in";
-}
-else{
-    echo "Not logged in";
-}
+session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +62,19 @@ else{
             </div>
         </div>
         <!-- end preloader -->
-        
+
+        <?php
+            if(isset($_SESSION['email'])){
+                echo "<form action='includes/logout.include.php' method='post'>
+                          <button type='submit'>logout</button>
+                      </form>";
+            }
+            else{
+                echo "<form action='login.php' method='post'>
+                          <button type='submit'>login</button>
+                      </form>";
+            }
+        ?>
         <!-- start header -->
         <header class="header_area">
 
@@ -74,9 +82,6 @@ else{
             <div class="main_header_area">
                 <div class="container">
                     <!-- start mainmenu & logo -->
-                    <form action="login.php" method="post">
-                        <button type="submit">login</button>
-                    </form>
                     <div class="mainmenu">
                         <div id="nav">
                             <nav class="navbar navbar-default">
