@@ -296,8 +296,8 @@ $conn = $Database->getConnection();
                                     <img src="img/about-us-thumb.jpg" alt="">
 
                                     <?php
-                                    $sql = "SELECT context FROM aboutus WHERE `name`='para2'";
-                                    $result=$conn->query($sql);
+                                        $sql = "SELECT context FROM aboutus WHERE `name`='para2'";
+                                        $result=$conn->query($sql);
                                     $context = '';
 
                                     if ($result->num_rows > 0) {
@@ -308,9 +308,9 @@ $conn = $Database->getConnection();
 
                                     if(isset($_SESSION["email"])){
                                         echo "<form action='includes/aboutus.include.php' method='post'>
-                                                <textarea name='para2' type='text' style='width:100%; height: 200px;'>$context</textarea>
-                                                <button type='submit'> Save</button>
-                                          </form>";
+                                                    <textarea name='para2' type='text' style='width:100%; height: 200px;'>$context</textarea>
+                                                    <button type='submit'> Save</button>
+                                              </form>";
                                     }
                                     else{
                                         echo "<p>".$context."</p>";

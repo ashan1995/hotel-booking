@@ -1,6 +1,8 @@
 <?php
+include 'includes/Database.include.php';
 session_start();
-
+$Database = new Database();
+$conn = $Database->getConnection();
 ?>
 
 <!DOCTYPE html>
@@ -318,7 +320,27 @@ session_start();
                             <h3>Welcome To Hotel</h3>
                         </div>
                         <div class="section_description">
-                            <p> Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor. </p>
+                            <?php
+                                $sql = "SELECT context FROM `index` WHERE `name`='welcome'";
+                                $result=$conn->query($sql);
+                                $context = '';
+
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        $context=$row["context"];
+                                    }
+                                }
+                                if(isset($_SESSION["email"])){
+                                    echo "<form action='includes/index.include.php' method='post'>
+                                                    <textarea name='welcome' type='text' style='width:100%; height: 200px;'>$context</textarea>
+                                                    <button type='submit'> Save</button>
+                                              </form>";
+                                }
+                                else{
+                                    echo "<p>".$context."</p>";
+                                }
+
+                            ?>
                         </div>
                         <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-3">
